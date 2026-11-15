@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	posts: CollectionEntry<'blog'>[];
+}
+const { posts } = Astro.props;
+---
+
+<ul class="post-list">
+	{
+		posts.map((post) => (
+			<li>
+				<a href={`/blog/${post.id}/`}>
+					<h3>{post.data.title}</h3>
+					<p class="desc">{post.data.description}</p>
+				</a>
+				<div class="meta">
+					<FormattedDate date={post.data.pubDate} />
+					{post.data.tags.map((tag) => (
+						<a class="tag" href={`/tags/${tag}/`}>
+							#{tag}
+						</a>
+					))}
+				</div>
+			</li>
+		))
+	}
+</ul>
+{posts.length === 0 && <p class="empty">아직 글이 없습니다.</p>}
+
+<style>
+	.post-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		padding: 1.25em 0;
+		border-bottom: 1px solid var(--border);
+	}
+	li > a {
+		color: inherit;
+		text-decoration: none;
+	}
+	h3 {
+		margin: 0 0 0.3em;
+		font-size: 1.25em;
+	}
+	li > a:hover h3 {
+		color: var(--accent);
+	}
+	.desc {
+		margin: 0 0 0.5em;
+		color: var(--text-muted);
+	}
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+		font-size: 0.85em;
+		color: var(--text-muted);
+	}
+	.tag {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.empty {
+		color: var(--text-muted);
+	}
+</style>

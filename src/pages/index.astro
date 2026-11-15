@@ -1,0 +1,36 @@
+---
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPosts } from '../utils/posts';
+
+const posts = (await getPosts()).slice(0, 10);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="intro">
+		<h1>안녕하세요, cds입니다 👋</h1>
+		<p>AI와 Claude 스킬을 직접 써보면서 배운 것들, 그리고 개발하며 마주친 문제와 해결 과정을 기록합니다.</p>
+	</section>
+	<h2>최근 글</h2>
+	<PostList posts={posts} />
+	<p class="more"><a href="/blog">전체 글 보기 →</a></p>
+</BaseLayout>
+
+<style>
+	.intro {
+		margin-bottom: 2.5em;
+	}
+	.intro p {
+		color: var(--text-muted);
+		font-size: 1.05em;
+	}
+	h2 {
+		font-size: 1.1em;
+		color: var(--text-muted);
+		margin-bottom: 0;
+	}
+	.more {
+		margin-top: 1.5em;
+	}
+</style>

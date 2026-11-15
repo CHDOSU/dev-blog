@@ -1,0 +1,165 @@
+/* 색상 토큰: 라이트/다크 모드는 html[data-theme]로 전환됩니다. */
+:root {
+	--accent: #2563eb;
+	--bg: #ffffff;
+	--bg-blur: rgba(255, 255, 255, 0.8);
+	--surface: #f4f5f7;
+	--text: #1f2328;
+	--text-muted: #59636e;
+	--border: #e5e7eb;
+	--code-bg: #f6f8fa;
+	color-scheme: light;
+}
+[data-theme='dark'] {
+	--accent: #60a5fa;
+	--bg: #0f1115;
+	--bg-blur: rgba(15, 17, 21, 0.8);
+	--surface: #1a1d23;
+	--text: #e6e8eb;
+	--text-muted: #9aa4b2;
+	--border: #2a2f37;
+	--code-bg: #161b22;
+	color-scheme: dark;
+}
+
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family:
+		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo',
+		'Noto Sans KR', 'Malgun Gothic', sans-serif;
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-size: 17px;
+	line-height: 1.75;
+	word-break: keep-all;
+	overflow-wrap: break-word;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+main {
+	width: 720px;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 3em 1em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 1.6em 0 0.6em;
+	color: var(--text);
+	line-height: 1.35;
+	letter-spacing: -0.02em;
+}
+h1 {
+	font-size: 2.2em;
+	margin-top: 0;
+}
+h2 {
+	font-size: 1.6em;
+}
+h3 {
+	font-size: 1.3em;
+}
+a {
+	color: var(--accent);
+	text-underline-offset: 3px;
+}
+p {
+	margin: 0 0 1.2em;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5em 0;
+	font-size: 0.95em;
+}
+th,
+td {
+	padding: 0.5em 0.75em;
+	border: 1px solid var(--border);
+	text-align: left;
+}
+th {
+	background: var(--surface);
+}
+blockquote {
+	margin: 1.5em 0;
+	padding: 0.5em 1em;
+	border-left: 4px solid var(--accent);
+	background: var(--surface);
+	color: var(--text-muted);
+	border-radius: 0 8px 8px 0;
+}
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2em 0;
+}
+
+/* 인라인 코드 */
+code {
+	font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.88em;
+	padding: 0.15em 0.4em;
+	background: var(--surface);
+	border-radius: 4px;
+}
+/* 코드 블록 (Shiki) */
+pre {
+	padding: 1em 1.25em;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	overflow-x: auto;
+	font-size: 0.9em;
+	line-height: 1.6;
+}
+pre > code {
+	padding: 0;
+	background: none;
+	font-size: inherit;
+}
+.astro-code,
+.astro-code span {
+	background-color: var(--code-bg) !important;
+}
+[data-theme='dark'] .astro-code,
+[data-theme='dark'] .astro-code span {
+	color: var(--shiki-dark) !important;
+	font-style: var(--shiki-dark-font-style) !important;
+	font-weight: var(--shiki-dark-font-weight) !important;
+	text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 16px;
+	}
+	main {
+		padding: 2em 1em;
+	}
+	h1 {
+		font-size: 1.8em;
+	}
+}
+
+.sr-only {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
