@@ -8,29 +8,177 @@ const posts = (await getPosts()).slice(0, 10);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<section class="intro">
-		<h1>안녕하세요, cds입니다 👋</h1>
-		<p>AI와 Claude 스킬을 직접 써보면서 배운 것들, 그리고 개발하며 마주친 문제와 해결 과정을 기록합니다.</p>
+	<section class="hero">
+		<div class="planet" aria-hidden="true">
+			<div class="ring"></div>
+			<div class="moon"></div>
+		</div>
+		<p class="eyebrow">// exploring the universe of AI</p>
+		<h1>
+			AI라는 우주를<br /><span class="gradient-text">탐험하는 개발 일지</span>
+		</h1>
+		<p class="lead">
+			안녕하세요, cds입니다. Claude와 Claude 스킬을 직접 써보며 배운 것들, 개발하면서 마주친 문제와 해결 과정을
+			기록합니다.
+		</p>
+		<div class="cta">
+			<a class="btn primary" href="/blog">글 둘러보기</a>
+			<a class="btn" href="/about">소개</a>
+		</div>
 	</section>
-	<h2>최근 글</h2>
+
+	<h2 class="section-title"><span>✦</span> 최근 글</h2>
 	<PostList posts={posts} />
 	<p class="more"><a href="/blog">전체 글 보기 →</a></p>
 </BaseLayout>
 
 <style>
-	.intro {
-		margin-bottom: 2.5em;
+	.hero {
+		position: relative;
+		padding: 2.5em 0 3.5em;
+		margin-bottom: 1em;
 	}
-	.intro p {
-		color: var(--text-muted);
-		font-size: 1.05em;
+	.eyebrow {
+		font-family: var(--font-mono);
+		font-size: 0.85em;
+		color: var(--accent-2);
+		margin-bottom: 1em;
+		letter-spacing: 0.02em;
 	}
-	h2 {
-		font-size: 1.1em;
+	.hero h1 {
+		font-size: 3em;
+		line-height: 1.2;
+		margin-bottom: 0.5em;
+		text-shadow: 0 0 40px rgba(167, 139, 250, 0.25);
+	}
+	.lead {
+		max-width: 34em;
 		color: var(--text-muted);
-		margin-bottom: 0;
+		font-size: 1.08em;
+	}
+	.cta {
+		display: flex;
+		gap: 0.75em;
+		margin-top: 1.75em;
+	}
+	.btn {
+		display: inline-block;
+		padding: 0.6em 1.3em;
+		border-radius: 999px;
+		border: 1px solid var(--border-strong);
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.95em;
+		background: var(--surface);
+		transition:
+			box-shadow 0.25s ease,
+			transform 0.25s ease;
+	}
+	.btn:hover {
+		color: #fff;
+		text-shadow: none;
+		transform: translateY(-2px);
+		box-shadow: var(--glow);
+	}
+	.btn.primary {
+		border-color: transparent;
+		background: linear-gradient(120deg, #7c3aed, #4f46e5 50%, #0891b2);
+		box-shadow: 0 0 20px rgba(124, 58, 237, 0.45);
+	}
+	.planet {
+		position: absolute;
+		top: 0.5em;
+		right: -1em;
+		width: 170px;
+		height: 170px;
+		border-radius: 50%;
+		background: radial-gradient(circle at 32% 30%, #c4b5fd 0%, #7c3aed 30%, #312e81 62%, #0b0b1a 100%);
+		box-shadow:
+			0 0 60px rgba(124, 58, 237, 0.55),
+			inset -22px -18px 40px rgba(0, 0, 0, 0.65);
+		z-index: -1;
+		animation: float 9s ease-in-out infinite;
+	}
+	.ring {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 270px;
+		height: 70px;
+		border-radius: 50%;
+		border: 2px solid rgba(103, 232, 249, 0.45);
+		border-top-color: transparent;
+		transform: translate(-50%, -50%) rotate(-18deg);
+		box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+	}
+	.moon {
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		background: radial-gradient(circle at 30% 30%, #fff, #67e8f9 60%, #0e7490);
+		box-shadow: 0 0 14px rgba(103, 232, 249, 0.8);
+		top: 50%;
+		left: 50%;
+		animation: orbit 14s linear infinite;
+	}
+	@keyframes float {
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+	@keyframes orbit {
+		from {
+			transform: rotate(0deg) translateX(130px) rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg) translateX(130px) rotate(-360deg);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.planet,
+		.moon {
+			animation: none;
+		}
+	}
+	.section-title {
+		font-size: 1em;
+		font-family: var(--font-mono);
+		color: var(--text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin: 0 0 1em;
+	}
+	.section-title span {
+		color: var(--accent);
+		text-shadow: 0 0 10px var(--accent);
 	}
 	.more {
-		margin-top: 1.5em;
+		margin-top: 1.75em;
+		text-align: right;
+	}
+	@media (max-width: 720px) {
+		.hero h1 {
+			font-size: 2.1em;
+		}
+		.planet {
+			width: 110px;
+			height: 110px;
+			right: -2em;
+			top: -0.5em;
+			opacity: 0.75;
+		}
+		.ring {
+			width: 180px;
+			height: 46px;
+		}
+		@keyframes orbit {
+			from {
+				transform: rotate(0deg) translateX(88px) rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg) translateX(88px) rotate(-360deg);
+			}
+		}
 	}
 </style>

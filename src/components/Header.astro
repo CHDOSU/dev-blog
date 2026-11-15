@@ -1,12 +1,11 @@
 ---
 import { GITHUB_URL, SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
-import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
 	<nav>
-		<a class="logo" href="/">{SITE_TITLE}</a>
+		<a class="logo" href="/"><span class="orb" aria-hidden="true"></span>{SITE_TITLE}</a>
 		<div class="links">
 			<HeaderLink href="/blog">글</HeaderLink>
 			<HeaderLink href="/tags">태그</HeaderLink>
@@ -19,7 +18,6 @@ import ThemeToggle from './ThemeToggle.astro';
 					></path>
 				</svg>
 			</a>
-			<ThemeToggle />
 		</div>
 	</nav>
 </header>
@@ -29,35 +27,53 @@ import ThemeToggle from './ThemeToggle.astro';
 		top: 0;
 		z-index: 10;
 		background: var(--bg-blur);
-		backdrop-filter: blur(8px);
+		backdrop-filter: blur(14px) saturate(140%);
+		-webkit-backdrop-filter: blur(14px) saturate(140%);
 		border-bottom: 1px solid var(--border);
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 960px;
+		max-width: 1040px;
 		margin: 0 auto;
-		padding: 0.6em 1em;
+		padding: 0.7em 1.25em;
 	}
 	.logo {
-		font-weight: 800;
-		font-size: 1.1em;
-		color: var(--text);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55em;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.15em;
+		letter-spacing: -0.01em;
+		color: #fff;
 		text-decoration: none;
+	}
+	.logo:hover {
+		color: #fff;
+	}
+	.orb {
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		background: radial-gradient(circle at 30% 30%, #fff, #a78bfa 45%, #4c1d95 100%);
+		box-shadow:
+			0 0 12px rgba(167, 139, 250, 0.9),
+			0 0 28px rgba(34, 211, 238, 0.35);
 	}
 	.links {
 		display: flex;
 		align-items: center;
 		gap: 0.25em;
-		font-size: 0.9em;
+		font-size: 0.92em;
 	}
 	.icon {
 		display: inline-flex;
-		padding: 0.4em;
+		padding: 0.45em;
 		color: var(--text-muted);
 	}
 	.icon:hover {
-		color: var(--text);
+		color: #fff;
 	}
 </style>

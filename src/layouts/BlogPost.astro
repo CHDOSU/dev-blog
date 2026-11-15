@@ -43,27 +43,45 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [], minutes 
 
 <style>
 	.title {
-		margin-bottom: 2em;
-		padding-bottom: 1.5em;
-		border-bottom: 1px solid var(--border);
+		position: relative;
+		margin-bottom: 2.5em;
+		padding-bottom: 2em;
+	}
+	.title::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: linear-gradient(90deg, var(--accent), var(--accent-2) 40%, transparent);
+		box-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
 	}
 	.title h1 {
-		margin-bottom: 0.4em;
+		margin-bottom: 0.5em;
+		text-shadow: 0 0 40px rgba(167, 139, 250, 0.25);
 	}
 	.meta {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0.4em;
-		color: var(--text-muted);
-		font-size: 0.9em;
+		font-family: var(--font-mono);
+		color: var(--accent-2);
+		font-size: 0.8em;
 	}
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.6em;
-		margin-top: 0.6em;
-		font-size: 0.9em;
+		gap: 0.45em;
+		margin-top: 0.9em;
 	}
 	.tags a {
+		font-size: 0.8em;
+		padding: 0.15em 0.65em;
+		border-radius: 999px;
+		color: #c4b5fd;
+		background: rgba(167, 139, 250, 0.1);
+		border: 1px solid rgba(167, 139, 250, 0.2);
 		text-decoration: none;
 	}
 	.hero {

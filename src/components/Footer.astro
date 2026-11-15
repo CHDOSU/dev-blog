@@ -14,13 +14,24 @@ const today = new Date();
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 4em;
+		padding: 2.5em 1em 3em;
 		color: var(--text-muted);
 		text-align: center;
 		font-size: 0.85em;
 		border-top: 1px solid var(--border);
+		background: linear-gradient(to bottom, transparent, rgba(124, 58, 237, 0.06));
+	}
+	footer p {
+		display: flex;
+		justify-content: center;
+		gap: 0.6em;
+		margin: 0;
 	}
 	a {
 		color: inherit;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #fff;
 	}
 </style>

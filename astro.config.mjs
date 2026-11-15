@@ -16,8 +16,8 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {
-			// 라이트/다크 모드에 맞춰 코드 블록 색이 바뀝니다.
-			themes: { light: 'github-light', dark: 'github-dark' },
+			// 우주 테마에 어울리는 어두운 코드 테마
+			theme: 'tokyo-night',
 			wrap: false,
 		},
 	},

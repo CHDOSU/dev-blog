@@ -3,8 +3,8 @@
 AI, Claude 스킬, 개발 이야기를 기록하는 블로그입니다. [Astro](https://astro.build) 공식 블로그 템플릿을 기반으로 만들었습니다.
 
 - Markdown / MDX 글 작성
-- 코드 하이라이팅 (Shiki, 라이트·다크 테마 자동 전환)
-- 다크 모드 (시스템 설정 따라감 + 헤더 버튼으로 전환)
+- 코드 하이라이팅 (Shiki, tokyo-night 테마)
+- 우주 테마 (검은 배경, 반짝이는 별과 유성, 성운 그라데이션, 글로우)
 - 태그, 읽기 시간, 초안(draft)
 - SEO 메타태그, Open Graph, sitemap, RSS(`/rss.xml`), robots.txt
 
